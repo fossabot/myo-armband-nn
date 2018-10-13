@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 
-def model(_NUM_CLASSES = 4):
+def model(_NUM_CLASSES = 6):
 
     with tf.name_scope('data'):
         x = tf.placeholder(tf.float32, shape=[None, 64], name='Input')

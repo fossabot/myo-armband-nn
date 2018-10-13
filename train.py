@@ -56,12 +56,11 @@ except:
     sess.run(tf.global_variables_initializer())
 
 
-def train(num_iterations = 1000):
+def train(num_iterations = 100):
     for i in range(num_iterations):
         randidx = np.random.randint(len(train_x), size=_BATCH_SIZE)
         batch_xs = train_x[randidx]
         batch_ys = train_y[randidx]
-
         start_time = time()
         i_global, _ = sess.run([global_step, optimizer], feed_dict={x: batch_xs, y: batch_ys})
         duration = time() - start_time

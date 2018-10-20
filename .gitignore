@@ -1,3 +1,5 @@
 .idea/
-/data/collection_data.py
-/data/prepare_data.py
+tf_export/
+!tf_export/init
+tf_session/
+!tf_session/init

@@ -1,10 +1,10 @@
 import tensorflow as tf
 import numpy as np
 from sklearn.metrics import confusion_matrix
-from include.model import model
+from src.model import model
 
 
-from include.data import get_data_set
+from data import get_data_set
 x, y, output, global_step, y_pred_cls = model(6)
 
 
@@ -13,7 +13,7 @@ test_l = ["Relax", "Ok", "Fist", "Like", "Rock", "Spock"]
 
 
 saver = tf.train.Saver()
-_SAVE_PATH = "./data/tensorflow_sessions/myo_armband/"
+_SAVE_PATH = "./tf_session"
 sess = tf.Session()
 
 

@@ -1,4 +1,5 @@
 #!/bin/bash
 docker rmi -f myo-train
 docker rm -f myo-train
-rm -r ../tf_export/1
+sudo chmod u+w ../tf_export/*
+sudo rm -r ../tf_export/1

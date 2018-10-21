@@ -3,3 +3,4 @@ tf_export/
 !tf_export/init
 tf_session/
 !tf_session/init
+*.pyc

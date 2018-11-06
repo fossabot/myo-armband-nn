@@ -1,0 +1,9 @@
+image: tensorflow/tensorflow:latest-gpu-py3
+cmd:
+  - bash
+  - -c
+  - apt-get update && apt-get install -y python3-pip && apt-get install -y git && python3 -m pip install numpy sklearn myo-python && python3 train.py
+opt:
+  exportSession: false
+  pullImages: true
+  runtime: nvidia

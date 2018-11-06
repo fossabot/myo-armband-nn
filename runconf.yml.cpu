@@ -1,4 +1,4 @@
-image tensorflow/tensorflow:latest-py3
+image: tensorflow/tensorflow:latest-py3
 cmd:
   - bash
   - -c

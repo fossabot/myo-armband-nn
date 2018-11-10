@@ -10,7 +10,7 @@ from src.model import model
 x, y, output, global_step, y_pred_cls = model()
 
 saver = tf.train.Saver()
-_SAVE_PATH = ".../tf_session"
+_SAVE_PATH = "./tf_session"
 sess = tf.Session()
 
 

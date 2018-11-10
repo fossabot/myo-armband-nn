@@ -4,7 +4,7 @@ from sklearn.metrics import confusion_matrix
 from src.model import model
 
 
-from data import get_data_set
+from src.data import get_data_set
 x, y, output, global_step, y_pred_cls = model(6)
 
 

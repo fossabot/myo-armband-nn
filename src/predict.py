@@ -4,19 +4,18 @@ import threading
 import time
 import numpy as np
 import tensorflow as tf
-from src.model import model
 
+from model import model
+from common import *
 
 x, y, output, global_step, y_pred_cls = model()
-
 saver = tf.train.Saver()
-_SAVE_PATH = "./tf_session"
 sess = tf.Session()
 
 
 try:
     print("Trying to restore last checkpoint ...")
-    last_chk_path = tf.train.latest_checkpoint(checkpoint_dir=_SAVE_PATH)
+    last_chk_path = tf.train.latest_checkpoint(checkpoint_dir=get_tf_session_dir())
     print(last_chk_path)
     saver.restore(sess, save_path=last_chk_path)
     print("Restored checkpoint from:", last_chk_path)

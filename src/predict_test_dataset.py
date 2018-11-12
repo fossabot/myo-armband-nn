@@ -1,25 +1,27 @@
 import tensorflow as tf
 import numpy as np
 from sklearn.metrics import confusion_matrix
-from src.model import model
+from pathlib import Path
+
+from model import model
+from common import *
+from data import get_data_set
+
+save_path = Path(get_tf_session_dir())
+x, y, output, global_step, y_pred_cls = model()
 
 
-from src.data import get_data_set
-x, y, output, global_step, y_pred_cls = model(6)
-
-
-test_x, test_y = get_data_set("./test_data/")
+test_x, test_y = get_data_set(get_test_data_location())
 test_l = ["Relax", "Ok", "Fist", "Like", "Rock", "Spock"]
 
 
 saver = tf.train.Saver()
-_SAVE_PATH = "./tf_session"
 sess = tf.Session()
 
 
 try:
     print("Trying to restore last checkpoint ...")
-    last_chk_path = tf.train.latest_checkpoint(checkpoint_dir=_SAVE_PATH)
+    last_chk_path = tf.train.latest_checkpoint(checkpoint_dir=save_path)
     print(last_chk_path)
     saver.restore(sess, save_path=last_chk_path)
     print("Restored checkpoint from:", last_chk_path)
@@ -45,7 +47,7 @@ print("Accuracy on Test-Set: {0:.2f}% ({1} / {2})".format(acc, correct_numbers, 
 
 
 cm = confusion_matrix(y_true=np.argmax(test_y, axis=1), y_pred=predicted_class)
-for i in range(6):
+for i in range(get_num_classes() - 1):
     class_name = "({}) {}".format(i, test_l[i])
     print(cm[i, :], class_name)
 class_numbers = [" ({0})".format(i) for i in range(6)]

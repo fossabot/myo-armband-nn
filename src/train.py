@@ -9,25 +9,26 @@ import numpy as np
 import tensorflow as tf
 
 from time import time
-from data import get_data_set
-from model import model
 from tensorflow.python.saved_model import builder as saved_model_builder
 from tensorflow.python.saved_model import utils
 from tensorflow.python.saved_model import signature_constants
 from tensorflow.python.saved_model import signature_def_utils
 from tensorflow.python.saved_model.builder_impl import SavedModelBuilder
+from pathlib import Path
+from data import get_data_set
+from model import model
+from common import *
 
+_BATCH_SIZE = 300
 tf.app.flags.DEFINE_integer('model_version', 1, 'version number of the model.')
 FLAGS = tf.app.flags.FLAGS
 
-train_x, train_y = get_data_set()
+train_x, train_y = get_data_set(get_train_data_location())
 
-_BATCH_SIZE = 300
-_CLASS_SIZE = 6
-_SAVE_PATH = "../tf_session/"
-_EXPORT_PATH_BASE = "../tf_export"
+save_path = str(Path(get_tf_session_dir()))
+export_path_base = str(Path(get_tf_export_dir()))
 
-x, y, output, global_step, y_pred_cls = model(_CLASS_SIZE)
+x, y, output, global_step, y_pred_cls = model()
 
 
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=output, labels=y))
@@ -45,12 +46,12 @@ merged = tf.summary.merge_all()
 saver = tf.train.Saver()
 sess = tf.Session()
 serialized_tf_example = tf.placeholder(tf.string, name='myo-nn')
-train_writer = tf.summary.FileWriter(_SAVE_PATH, sess.graph)
+train_writer = tf.summary.FileWriter(save_path, sess.graph)
 
 
 try:
     print("Trying to restore last checkpoint ...")
-    last_chk_path = tf.train.latest_checkpoint(checkpoint_dir=_SAVE_PATH)
+    last_chk_path = tf.train.latest_checkpoint(checkpoint_dir=save_path)
     saver.restore(sess, save_path=last_chk_path)
     print("Restored checkpoint from:", last_chk_path)
 except:
@@ -75,14 +76,14 @@ def train(num_iterations = 1000):
         if (i_global % 100 == 0) or (i == num_iterations - 1):
             data_merged, global_1 = sess.run([merged, global_step], feed_dict={x: batch_xs, y: batch_ys})
             train_writer.add_summary(data_merged, global_1)
-            saver.save(sess, save_path=_SAVE_PATH, global_step=global_step)
+            saver.save(sess, save_path=save_path, global_step=global_step)
             print("Saved checkpoint.")
 
 
 train(30000)
 
 export_path = os.path.join(
-      tf.compat.as_bytes(_EXPORT_PATH_BASE),
+      tf.compat.as_bytes(export_path_base),
       tf.compat.as_bytes(str(FLAGS.model_version)))
 if os.path.exists(export_path) and os.path.isdir(export_path):
     shutil.rmtree(export_path)

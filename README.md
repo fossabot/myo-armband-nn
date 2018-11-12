@@ -72,6 +72,5 @@ Accuracy on Test-Set: 80.00% (12 / 15)
 | **Softmax_linear** |
 ![](https://s3.eu-central-1.amazonaws.com/serhiy/Github_repo/myo-armband-nn-model.png)
 
-
 ## License
 [GNU General Public License v3.0](https://github.com/exelban/myo-armband-nn/blob/master/LICENSE)

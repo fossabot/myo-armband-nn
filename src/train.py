@@ -24,7 +24,8 @@ train_x, train_y = get_data_set()
 
 _BATCH_SIZE = 300
 _CLASS_SIZE = 6
-_SAVE_PATH = "../tf_session"
+_SAVE_PATH = "../tf_session/"
+_EXPORT_PATH_BASE = "../tf_export"
 
 x, y, output, global_step, y_pred_cls = model(_CLASS_SIZE)
 
@@ -80,9 +81,8 @@ def train(num_iterations = 1000):
 
 train(30000)
 
-export_path_base = "../tf_export"
 export_path = os.path.join(
-      tf.compat.as_bytes(export_path_base),
+      tf.compat.as_bytes(_EXPORT_PATH_BASE),
       tf.compat.as_bytes(str(FLAGS.model_version)))
 if os.path.exists(export_path) and os.path.isdir(export_path):
     shutil.rmtree(export_path)

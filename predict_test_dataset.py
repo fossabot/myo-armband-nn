@@ -8,7 +8,7 @@ from src.data import get_data_set
 x, y, output, global_step, y_pred_cls = model(6)
 
 
-test_x, test_y = get_data_set()
+test_x, test_y = get_data_set("./test_data/")
 test_l = ["Relax", "Ok", "Fist", "Like", "Rock", "Spock"]
 
 

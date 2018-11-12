@@ -25,18 +25,6 @@ def load_scvs(location="./../data/"):
         index+=1
     return x, y
 
-def get_data_set(name="bymotion"):
-    x = None
-    y = None
-
-    if name is "train":
-        npzfile = np.load("./data/train_set.npz")
-        x = npzfile['x']
-        y = npzfile['y']
-    elif name is "test":
-        npzfile = np.load("./data_set/test_set.npz")
-        x = npzfile['x']
-        y = npzfile['y']
-    elif name is "bymotion":
-        x, y = load_scvs()
+def get_data_set(location="./../data/"):
+    x, y = load_scvs(location)
     return x, y

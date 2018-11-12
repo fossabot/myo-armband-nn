@@ -13,7 +13,7 @@ def get_data_set(location):
                 filenames.append(location + filename)
     merged = []
     for fname in filenames:
-        fileLoad = np.loadtxt(open(Path(fname), "rb"), delimiter=",")
+        fileLoad = np.loadtxt(open(str(Path(fname)), "rb"), delimiter=",")
         merged.append(fileLoad)
     merged = np.concatenate(merged)
     x = merged[:,:64]

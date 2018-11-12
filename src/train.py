@@ -25,8 +25,8 @@ FLAGS = tf.app.flags.FLAGS
 
 train_x, train_y = get_data_set(get_train_data_location())
 
-save_path = str(Path(get_tf_session_dir()))
-export_path_base = str(Path(get_tf_export_dir()))
+save_path = str(Path(get_tf_session_dir())) + os.sep
+export_path_base = str(Path(get_tf_export_dir())) + os.sep
 
 x, y, output, global_step, y_pred_cls = model()
 

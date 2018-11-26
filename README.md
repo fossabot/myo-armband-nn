@@ -34,13 +34,7 @@ In repo are collected dataset from Myo armband collected by me. Dataset contains
 ```sh
 python3 train.py
 ```
-75k iteration take about 20 min on GTX 960 or 2h on i3-6100.
-
-Accuracy after ~75k iteration (98.75%):
-![](https://s3.eu-central-1.amazonaws.com/serhiy/Github_repo/myo-armband-nn-accuracy.png)
-
-Loose after ~75k iteration (1.28):
-![](https://s3.eu-central-1.amazonaws.com/serhiy/Github_repo/myo-armband-nn-losse.png)
+75k iteration will take about 20 min on GTX 960 or 2h on i3-6100.
 
 ## Prediction
 ### Prediction on data from MYO armband
@@ -50,23 +44,21 @@ python3 predict.py
 You must have installed MYO SDK.
 Script will return number (0-5) witch represent gesture (0 - relaxed arm).
 
-### Prediction on training dataset
+### Prediction on test dataset
 ```sh
-python3 predict_train_dataset.py
+python3 predict_test_dataset.py
 ```
 Example output:
 ```
-Accuracy on Test-Set: 98.27% (19235 / 19573)
-[2438    5    9    6    4   20] (0) Relax
-[   4 2652   45    1    3    9] (1) Ok
-[   8   44 4989    1    1    9] (2) Fist
-[   8    2    2 4152   28   13] (3) Like
-[   2    5    6   27 1839    1] (4) Rock
-[  14   22   13   21    5 3165] (5) Spock
+Accuracy on Test-Set: 80.00% (12 / 15)
+[2 1 0 0 0] (0) Relax
+[0 3 0 0 0] (1) Ok
+[0 0 3 0 0] (2) Fist
+[0 0 2 1 0] (3) Like
+[0 0 0 0 3] (4) Rock
  (0) (1) (2) (3) (4) (5)
-```
-I know that making prediction on training dataset wrong. But i don't have time to make testing dataset(
 
+```
 
 ## Model
 | **Fully connected 1 (528 neurons)** |
@@ -79,7 +71,6 @@ I know that making prediction on training dataset wrong. But i don't have time t
 | Dropout |
 | **Softmax_linear** |
 ![](https://s3.eu-central-1.amazonaws.com/serhiy/Github_repo/myo-armband-nn-model.png)
-
 
 ## License
 [GNU General Public License v3.0](https://github.com/exelban/myo-armband-nn/blob/master/LICENSE)

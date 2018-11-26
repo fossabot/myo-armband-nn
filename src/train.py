@@ -95,7 +95,8 @@ with sess.graph.as_default():
             "input": utils.build_tensor_info(x)
         },
         outputs={
-            "output": utils.build_tensor_info(y_pred_cls)
+            "output": utils.build_tensor_info(y_pred_cls),
+            "distr": utils.build_tensor_info(output)
         },
         method_name=signature_constants.PREDICT_METHOD_NAME
     )

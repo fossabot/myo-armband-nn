@@ -12,7 +12,7 @@ x, y, output, global_step, y_pred_cls = model()
 
 
 test_x, test_y = get_data_set(get_test_data_location())
-test_l = ["Relax", "Ok", "Fist", "Like", "Rock", "Spock"]
+test_l = ["Fist", "Paper", "Scissors", "Ok"]
 
 
 saver = tf.train.Saver()

@@ -50,13 +50,11 @@ python3 predict_test_dataset.py
 ```
 Example output:
 ```
-Accuracy on Test-Set: 80.00% (12 / 15)
-[2 1 0 0 0] (0) Relax
-[0 3 0 0 0] (1) Ok
-[0 0 3 0 0] (2) Fist
-[0 0 2 1 0] (3) Like
-[0 0 0 0 3] (4) Rock
- (0) (1) (2) (3) (4) (5)
+Accuracy on Test-Set: 90.74% (49 / 54)
+[14  0  0  0] (0) Fist
+[0 9 0 2] (1) Paper
+[ 0  0 13  1] (2) Scissors
+[ 0  0  2 13] (3) Ok
 
 ```
 

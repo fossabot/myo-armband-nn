@@ -1,4 +1,6 @@
 # myo-armband-nn
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkyr7%2Fmyo-armband-nn.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkyr7%2Fmyo-armband-nn?ref=badge_shield)
+
 Gesture recognition using [myo armband](https://www.myo.com) via neural network (tensorflow library).
 ![](https://s3.eu-central-1.amazonaws.com/serhiy/Github_repo/myo-armband-nn-logo.jpg)
 
@@ -72,3 +74,6 @@ Accuracy on Test-Set: 90.74% (49 / 54)
 
 ## License
 [GNU General Public License v3.0](https://github.com/exelban/myo-armband-nn/blob/master/LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkyr7%2Fmyo-armband-nn.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkyr7%2Fmyo-armband-nn?ref=badge_large)
